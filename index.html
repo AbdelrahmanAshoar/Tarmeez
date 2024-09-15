@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarmeez</title>
+  <link rel="stylesheet" href="assets/CSS/bootstrap.css">
+  <link rel="stylesheet" href="assets/CSS/style.css">
+</head>
+<body>
+
+
+
+
+  <div class="container col-lg-6 col-md-8">
+  <!-- start header -->
+    <div id="header" class="mb-5 rounded-bottom">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-transparent px-2 flex-row">
+          <h1 class="">Tarmeez</h1>
+          <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse ms-3 align-self-end" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0 flex-row">
+              <li class="nav-item pe-2">
+                <a class="nav-link active" href="./index.html" aria-current="page"
+                  >Home<span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="userProfile" href="./profile.html">Profile</a>
+              </li>
+              <li class="nav-item align-self-center position-absolute pe-2 end-0">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login-modal" data-bs-whatever="@mdo" id="toLogin">Login</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register-modal" data-bs-whatever="@fat" id="toRegister">Register</button>
+                <img src="" class="rounded-circle me-2" style="width: 40px; height: 40px;" id="imageProfile-nav">
+                <button type="button" class="btn btn-danger" id="toLogout" onclick="logout()">Logout</button>
+              </li>
+            </ul>
+          </div>
+      </nav>   
+    </div>
+  <!-- end header -->
+  
+    <!-- post creation button -->
+    <button class="btn bg-primary fs-1 text-white" data-bs-toggle="modal" data-bs-target="#addPost-modal" id="postBtn"><b class="plus" title="add post">+</b></button>
+    <div class="modal fade" id="addPost-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Creat Post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="title" class="col-form-label">Title:</label>
+                <input type="text" class="form-control" id="titlePost" value="title">
+              </div>
+              <div class="mb-3">
+                <label for="contentPost" class="col-form-label">Content:</label>
+                <textarea class="form-control" id="contentPost">content</textarea>
+              </div>
+              <div class="mb-3">
+                <label for="imagePost" class="col-form-label">Image:</label>
+                <input type="file" class="form-control" id="imagePost">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="createPost()">Create</button>
+          </div>
+          <small class="text-danger mb-4 text-center fs-6" id="warning"></small>
+        </div>
+      </div>
+    </div>  
+
+  <!-- start login_modal -->
+    <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="usernameLogin" class="col-form-label">Username:</label>
+                <input type="text" class="form-control" id="usernameLogin" >
+              </div>
+              <div class="mb-3">
+                <label for="passwordLogin" class="col-form-label">Password:</label>
+                <input type="password" class="form-control" id="passwordLogin" >
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="loginBtn" onclick="login()">Login</button>
+          </div>
+          <small class="text-danger mb-4 text-center fs-6" id="warningLogin"></small>
+        </div>
+      </div>
+    </div>
+  <!-- end login_modal -->
+
+
+    <!-- start register_modal -->
+    <div class="modal fade" id="register-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="nameReg" class="col-form-label">Name:</label>
+                <input type="text" class="form-control" id="nameReg">
+              </div>
+              <div class="mb-3">
+                <label for="usernameReg" class="col-form-label">Username:</label>
+                <input type="text" class="form-control" id="usernameReg">
+              </div>
+              <div class="mb-3">
+                <label for="emailReg" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="emailReg">
+              </div>
+              <div class="mb-3">
+                <label for="passwordReg" class="col-form-label">Password:</label>
+                <input type="password" class="form-control" id="passwordReg" >
+              </div>
+              <div class="mb-3">
+                <label for="imageReg" class="col-form-label">Image Profile:</label>
+                <input type="file" class="form-control" id="imageReg">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="registerBtn" onclick="register()">Register</button>
+          </div>
+          <small class="text-danger mb-4 text-center fs-6" id="warningRegister"></small>
+        </div>
+      </div>
+    </div>
+  <!-- end register_modal -->
+
+    
+
+
+  <!-- start home -->
+    <div id="home" class="rounded-top">
+      <div id="posts">
+      </div>
+    </div>
+  <!-- end home -->
+
+  <!-- start post -->
+    <div id="post" class="rounded-top">
+
+    </div>
+  <!-- end post -->
+  </div>
+  
+</body>
+<script src="assets/JS/bootstrap.js"></script>
+<script src="assets/JS/axios.js"></script>
+<script src="assets/JS/main.js"></script>
+</html>

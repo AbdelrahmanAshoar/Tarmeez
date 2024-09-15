@@ -1,0 +1,98 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root{
+  --primarybg: #212529;
+  --secondarybg: #333344;
+}
+body{
+  background-color: var(--primarybg);
+  position: relative;
+}
+
+h1, h2{
+  color: #9188c6;
+}
+
+#login_page form, #register_page form{
+  background-color: var(--secondarybg);
+  box-shadow: 0 0 8px #2E236C;
+}
+#register_page{
+  & #fileInput {
+    display: none; 
+  };
+  & #customFileInput {
+    width: 100px;
+    height: 100px;
+    margin: 10px auto;
+    text-align: center;
+    padding-top: 35px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    & img{
+      border-radius: 50%;
+    }
+  }
+}
+
+#login_page input, #register_page input{
+  border: 2px solid #bc84dd;
+  &:focus {
+    outline: none;
+ }
+}
+
+#header, .card{
+  background-color: var(--secondarybg);
+  box-shadow: 0 0 30px #111;
+  & .card-header{
+    margin-bottom: 20px;
+  };
+  & .imageProfile, & .card-header img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  };
+}
+
+.alert{
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 100;
+}
+
+#postBtn{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: fixed;
+  right: 60px;
+  bottom: 60px;
+  z-index: 10;
+  & .plus{
+    transform: translateY(-5%);
+  }
+}
+
+#Profile #imageProfile{
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width:600px){
+  #postBtn{
+    right: 20px;
+    bottom: 20px;
+  }
+}

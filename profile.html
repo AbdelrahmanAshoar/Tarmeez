@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarmeez</title>
+  <link rel="stylesheet" href="assets/CSS/bootstrap.css">
+  <link rel="stylesheet" href="assets/CSS/style.css">
+</head>
+<body>
+  <!-- Update Post Modal -->
+  <div class="modal fade" id="editPost-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="title" class="col-form-label">Title:</label>
+              <input type="text" class="form-control" id="titlePost" value="title">
+            </div>
+            <div class="mb-3">
+              <label for="contentPost" class="col-form-label">Content:</label>
+              <textarea class="form-control" id="contentPost">content</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="imagePost" class="col-form-label">Image:</label>
+              <input type="file" class="form-control" id="imagePost">
+            </div>
+          </form>
+        </div>
+        <input type="hidden" id="idPost-input">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="editPost()">Edit</button>
+        </div>
+        <small class="text-danger mb-4 text-center fs-6" id="warning"></small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Post Modal -->
+  <div class="modal" tabindex="-1" id="deletePost-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Do you really want to delete the post?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <input type="hidden" id="idPost-input-Del">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" onclick="deletePost()">Yes, Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container col-lg-6 col-md-8">
+  <!-- start header -->
+    <div id="header" class="mb-5 rounded-bottom">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-transparent px-2 flex-row">
+          <h1 class="">Tarmeez</h1>
+          <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse ms-3 align-self-end" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0 flex-row">
+              <li class="nav-item pe-2">
+                <a class="nav-link" href="./index.html" aria-current="page"
+                  >Home<span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item"></li>
+                <a class="nav-link active" href="./profile.html">Profile</a>
+              </li>
+              <li class="nav-item align-self-center position-absolute pe-2 end-0">
+                <img src="" class="rounded-circle me-2" style="width: 40px; height: 40px;" id="imageProfile-nav">  
+                <button type="button" class="btn btn-danger" id="toLogout" onclick="logout()">Logout</button>
+              </li>
+            </ul>
+          </div>
+      </nav>   
+    </div>
+  <!-- end header -->
+
+  <!-- start profile page -->
+  <div id="containerProfile">
+    <div id="Profile" class="p-3 bg-info d-flex  align-items-baseline justify-content-between fw-bold">
+      <div class="d-flex gap-4 align-items-center">
+      <img src="" id="imageProfile">
+      <div id="details" class="col">
+        <div id="name"></div>
+        <div id="username"></div>
+        <div id="email"></div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!-- end profile page -->
+    
+  <div id="noUser" class="text-danger fs-1 fw-bold">
+    You are not logged in
+  </div>
+
+    <!-- start home -->
+    <div id="home" class="rounded-top mt-5">
+      <h2>My Posts <small class="fs-6 text-warning" id="postsNumber"></small></h2>
+      <div id="posts">
+      </div>
+    </div>
+  <!-- end home -->
+  </div>
+  
+</body>
+  <script src="assets/JS/bootstrap.js"></script>
+  <script src="assets/JS/axios.js"></script>
+  <script src="assets/JS/profile.js"></script>
+</html>
